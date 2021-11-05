@@ -8,8 +8,11 @@ type EventPreviewProps = {
 const EventPreview: React.FC<EventPreviewProps> = ({ entry }) => {
   return (
     <p>
-      {entry.fields.title} at slug{" "}
-      <Link href={`/events/${entry.fields.slug}`}>{entry.fields.slug}</Link>
+      {entry.fields.title}{" "}
+      {
+        entry.fields.rsvpLink &&
+        <Link href={entry.fields.rsvpLink}>RSVP</Link>
+      }
     </p>
   );
 };

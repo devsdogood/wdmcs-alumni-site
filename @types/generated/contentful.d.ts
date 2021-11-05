@@ -3,26 +3,24 @@
 import { Asset, Entry } from "contentful";
 import { Document } from "@contentful/rich-text-types";
 
-export interface IAnnouncementFields {
+export interface IAlumniSpotlightCollectionFields {
   /** Title */
-  title: string;
+  title?: string | undefined;
 
-  /** Slug */
-  slug: string;
+  /** Use most recent */
+  useMostRecent: boolean;
 
-  /** Published */
-  published?: string | undefined;
+  /** Limit */
+  limit?: number | undefined;
 
-  /** Description */
-  description?: string | undefined;
-
-  /** Content */
-  content: Document;
+  /** Alumni */
+  content: IAlumSpotlight[];
 }
 
-/** An announcement to be displayed on your site. */
+/** A collection of alumni spotlights to be displayed on your site */
 
-export interface IAnnouncement extends Entry<IAnnouncementFields> {
+export interface IAlumniSpotlightCollection
+  extends Entry<IAlumniSpotlightCollectionFields> {
   sys: {
     id: string;
     type: string;
@@ -31,7 +29,7 @@ export interface IAnnouncement extends Entry<IAnnouncementFields> {
     locale: string;
     contentType: {
       sys: {
-        id: "announcement";
+        id: "alumniSpotlightCollection";
         linkType: "ContentType";
         type: "Link";
       };
@@ -39,21 +37,20 @@ export interface IAnnouncement extends Entry<IAnnouncementFields> {
   };
 }
 
-export interface IAnnouncementCollectionFields {
-  /** Use most recent */
-  useMostRecent: boolean;
+export interface IAlumSpotlightFields {
+  /** Name */
+  name: string;
 
-  /** Limit */
-  limit?: number | undefined;
+  /** Image */
+  image?: Asset | undefined;
 
-  /** Announcements */
-  content: IAnnouncement[];
+  /** Content */
+  content?: Document | undefined;
 }
 
-/** A collection of announcements to display on your site. You can choose to display either the most recent announcements or a collection of announcements of your choice. */
+/** Information about an individual alum */
 
-export interface IAnnouncementCollection
-  extends Entry<IAnnouncementCollectionFields> {
+export interface IAlumSpotlight extends Entry<IAlumSpotlightFields> {
   sys: {
     id: string;
     type: string;
@@ -62,7 +59,40 @@ export interface IAnnouncementCollection
     locale: string;
     contentType: {
       sys: {
-        id: "announcementCollection";
+        id: "alumSpotlight";
+        linkType: "ContentType";
+        type: "Link";
+      };
+    };
+  };
+}
+
+export interface ICampaignGraphicFields {
+  /** Title */
+  title: string;
+
+  /** Raised */
+  raised: number;
+
+  /** Goal */
+  goal: number;
+
+  /** Donation Link */
+  donationLink: string;
+}
+
+/** An element for your site with a tracker for the campaign's goal and a link to donate. */
+
+export interface ICampaignGraphic extends Entry<ICampaignGraphicFields> {
+  sys: {
+    id: string;
+    type: string;
+    createdAt: string;
+    updatedAt: string;
+    locale: string;
+    contentType: {
+      sys: {
+        id: "campaignGraphic";
         linkType: "ContentType";
         type: "Link";
       };
@@ -71,6 +101,9 @@ export interface IAnnouncementCollection
 }
 
 export interface IContentSectionFields {
+  /** Title */
+  title?: string | undefined;
+
   /** Content */
   content: Document;
 }
@@ -109,6 +142,9 @@ export interface IEventFields {
 
   /** End */
   end: string;
+
+  /** RSVP Link */
+  rsvpLink?: string | undefined;
 }
 
 /** An event to be displayed on an event calendar. */
@@ -131,6 +167,9 @@ export interface IEvent extends Entry<IEventFields> {
 }
 
 export interface IEventCalendarFields {
+  /** Title */
+  title?: string | undefined;
+
   /** Use most recent */
   useMostRecent: boolean;
 
@@ -160,20 +199,17 @@ export interface IEventCalendar extends Entry<IEventCalendarFields> {
   };
 }
 
-export interface IExternalResourceFields {
+export interface IImageCollectionFields {
   /** Title */
-  title: string;
+  title?: string | undefined;
 
-  /** Slug */
-  slug: string;
-
-  /** Resource Link */
-  resourceLink: string;
+  /** Images */
+  content: Asset[];
 }
 
-/** A training or resource from an external source (YouTube video, PDF, etc). */
+/** A gallery of images to be displayed on your site */
 
-export interface IExternalResource extends Entry<IExternalResourceFields> {
+export interface IImageCollection extends Entry<IImageCollectionFields> {
   sys: {
     id: string;
     type: string;
@@ -182,71 +218,7 @@ export interface IExternalResource extends Entry<IExternalResourceFields> {
     locale: string;
     contentType: {
       sys: {
-        id: "externalResource";
-        linkType: "ContentType";
-        type: "Link";
-      };
-    };
-  };
-}
-
-export interface IFacilitatorFields {
-  /** Image */
-  image: Asset;
-
-  /** Name */
-  name: string;
-
-  /** District */
-  district?: string | undefined;
-
-  /** Contact Information */
-  contactInformation?: Document | undefined;
-}
-
-/** The name, photo, district, and contact information for a facilitator. */
-
-export interface IFacilitator extends Entry<IFacilitatorFields> {
-  sys: {
-    id: string;
-    type: string;
-    createdAt: string;
-    updatedAt: string;
-    locale: string;
-    contentType: {
-      sys: {
-        id: "facilitator";
-        linkType: "ContentType";
-        type: "Link";
-      };
-    };
-  };
-}
-
-export interface IFacilitatorCollectionFields {
-  /** Use most recent */
-  useMostRecent: boolean;
-
-  /** Limit */
-  limit?: number | undefined;
-
-  /** Facilitators */
-  content: IFacilitator[];
-}
-
-/** A collection of facilitators to display on your site. You can choose to display either the most recent facilitators or a collection of facilitators of your choice. */
-
-export interface IFacilitatorCollection
-  extends Entry<IFacilitatorCollectionFields> {
-  sys: {
-    id: string;
-    type: string;
-    createdAt: string;
-    updatedAt: string;
-    locale: string;
-    contentType: {
-      sys: {
-        id: "facilitatorCollection";
+        id: "imageCollection";
         linkType: "ContentType";
         type: "Link";
       };
@@ -259,7 +231,7 @@ export interface INavigationItemFields {
   title?: string | undefined;
 
   /** Page */
-  page?: IAnnouncement | IPage | undefined;
+  page?: IPage | undefined;
 
   /** External URL */
   externalUrl?: string | undefined;
@@ -285,11 +257,11 @@ export interface INavigationItem extends Entry<INavigationItemFields> {
 }
 
 export interface INavigationMenuFields {
-  /** Menu Items */
-  menuItems?: INavigationItem[] | undefined;
-
   /** Logo */
   logo: Asset;
+
+  /** Menu Items */
+  menuItems: INavigationItem[];
 }
 
 /** The navigation menu to appear at the top of your site. Add links to pages within your site or links to an external site (donation page, social media page, etc). */
@@ -311,91 +283,22 @@ export interface INavigationMenu extends Entry<INavigationMenuFields> {
   };
 }
 
-export interface INewsletterFields {
+export interface IPageFields {
   /** Title */
   title: string;
 
-  /** Slug */
-  slug?: string | undefined;
-
-  /** Published */
-  published?: string | undefined;
-
-  /** Description */
-  description?: string | undefined;
-
-  /** Newsletter File */
-  newsletterFile: Asset;
-}
-
-/** A newsletter to be displayed on your site. */
-
-export interface INewsletter extends Entry<INewsletterFields> {
-  sys: {
-    id: string;
-    type: string;
-    createdAt: string;
-    updatedAt: string;
-    locale: string;
-    contentType: {
-      sys: {
-        id: "newsletter";
-        linkType: "ContentType";
-        type: "Link";
-      };
-    };
-  };
-}
-
-export interface INewsletterCollectionFields {
-  /** Use most recent */
-  useMostRecent: boolean;
-
-  /** Limit */
-  limit?: number | undefined;
-
-  /** Newsletters */
-  content: INewsletter[];
-}
-
-/** A collection of newsletters to display on your site. You can choose to display either the most recent newsletters or a collection of newsletters of your choice. */
-
-export interface INewsletterCollection
-  extends Entry<INewsletterCollectionFields> {
-  sys: {
-    id: string;
-    type: string;
-    createdAt: string;
-    updatedAt: string;
-    locale: string;
-    contentType: {
-      sys: {
-        id: "newsletterCollection";
-        linkType: "ContentType";
-        type: "Link";
-      };
-    };
-  };
-}
-
-export interface IPageFields {
   /** Slug */
   slug: string;
 
   /** Description */
   description?: string | undefined;
 
-  /** Title */
-  title: string;
-
   /** Content */
   content: (
-    | IAnnouncementCollection
+    | IAlumniSpotlightCollection
     | IContentSection
     | IEventCalendar
-    | IFacilitatorCollection
-    | INewsletterCollection
-    | IResourceCollection
+    | IImageCollection
   )[];
 }
 
@@ -418,82 +321,17 @@ export interface IPage extends Entry<IPageFields> {
   };
 }
 
-export interface IResourceFields {
-  /** Title */
-  title: string;
-
-  /** Slug */
-  slug: string;
-
-  /** Content */
-  content: Document;
-}
-
-/** A training or resource with custom content. */
-
-export interface IResource extends Entry<IResourceFields> {
-  sys: {
-    id: string;
-    type: string;
-    createdAt: string;
-    updatedAt: string;
-    locale: string;
-    contentType: {
-      sys: {
-        id: "resource";
-        linkType: "ContentType";
-        type: "Link";
-      };
-    };
-  };
-}
-
-export interface IResourceCollectionFields {
-  /** Use most recent */
-  useMostRecent: boolean;
-
-  /** Limit */
-  limit?: number | undefined;
-
-  /** Resources */
-  content: (IExternalResource | IResource)[];
-}
-
-/** A collection of resources to display on your site. You can choose to display either the most recent resources or a collection of resources of your choice. */
-
-export interface IResourceCollection extends Entry<IResourceCollectionFields> {
-  sys: {
-    id: string;
-    type: string;
-    createdAt: string;
-    updatedAt: string;
-    locale: string;
-    contentType: {
-      sys: {
-        id: "resourceCollection";
-        linkType: "ContentType";
-        type: "Link";
-      };
-    };
-  };
-}
-
 export type CONTENT_TYPE =
-  | "announcement"
-  | "announcementCollection"
+  | "alumniSpotlightCollection"
+  | "alumSpotlight"
+  | "campaignGraphic"
   | "contentSection"
   | "event"
   | "eventCalendar"
-  | "externalResource"
-  | "facilitator"
-  | "facilitatorCollection"
+  | "imageCollection"
   | "navigationItem"
   | "navigationMenu"
-  | "newsletter"
-  | "newsletterCollection"
-  | "page"
-  | "resource"
-  | "resourceCollection";
+  | "page";
 
 export type LOCALE_CODE = "en-US";
 

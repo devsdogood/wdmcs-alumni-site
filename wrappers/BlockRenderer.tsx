@@ -3,22 +3,18 @@ import {
   ContentTypes,
   IPageFieldsItem,
   IPageItemFieldsItem,
+  isIImageCollection,
   isIPage,
   isIPageFieldsItem,
 } from "../@types/contentTypes";
 import { IPage } from "../@types/generated/contentful";
-import AnnouncementPreview from "../components/previews/AnnouncementPreview";
+import AlumSpotlightPreview from "../components/previews/AlumSpotlightPreview";
+import CampaignGraphic from "../components/views/CampaignGraphic";
 import ContentSection from "../components/views/ContentSection";
 import EventPreview from "../components/previews/EventPreview";
-import ExternalResourcePreview from "../components/previews/ExternalResourcePreview";
-import Facilitator from "../components/views/Facilitator";
-import NewsletterPreview from "../components/previews/NewsletterPreview";
-import ResourcePreview from "../components/previews/ResourcePreview";
-import AnnouncementCollection from "./AnnouncementCollection";
+import AlumniSpotlightCollection from "./AlumniSpotlightCollection";
 import EventCalendar from "./EventCalendar";
-import FacilitatorCollection from "./FacilitatorCollection";
-import NewsletterCollection from "./NewsletterWrapper";
-import ResourceCollection from "./ResourceCollection";
+import ImageCollection from "./ImageCollection";
 
 type BlockRendererProps = {
   block: IPage | IPageFieldsItem | IPageItemFieldsItem;
@@ -38,6 +34,13 @@ const BlockRenderer: React.FC<BlockRendererProps> = ({ block }) => {
         ))}
       </>
     );
+  }
+
+  // ImageCollection contains children of type `Asset`, which causes type errors when 
+  // using the child's contentType for block rendering
+  if (isIImageCollection(block)) {
+    const Component = ContentTypeMap[ContentTypes.ImageCollection];
+    return <Component key={getKey(block)} entry={block} />
   }
 
   if (isIPageFieldsItem(block)) {
@@ -63,18 +66,13 @@ const BlockRenderer: React.FC<BlockRendererProps> = ({ block }) => {
 };
 
 const ContentTypeMap = {
-  [ContentTypes.Announcement]: AnnouncementPreview,
-  [ContentTypes.AnnouncementCollection]: AnnouncementCollection,
+  [ContentTypes.AlumSpotlight]: AlumSpotlightPreview,
+  [ContentTypes.AlumniSpotlightCollection]: AlumniSpotlightCollection,
+  [ContentTypes.CampaignGraphic]: CampaignGraphic,
   [ContentTypes.ContentSection]: ContentSection,
   [ContentTypes.Event]: EventPreview,
   [ContentTypes.EventCalendar]: EventCalendar,
-  [ContentTypes.ExternalResource]: ExternalResourcePreview,
-  [ContentTypes.Facilitator]: Facilitator,
-  [ContentTypes.FacilitatorCollection]: FacilitatorCollection,
-  [ContentTypes.Newsletter]: NewsletterPreview,
-  [ContentTypes.NewsletterCollection]: NewsletterCollection,
-  [ContentTypes.Resource]: ResourcePreview,
-  [ContentTypes.ResourceCollection]: ResourceCollection,
+  [ContentTypes.ImageCollection]: ImageCollection,
 };
 
 export default BlockRenderer;

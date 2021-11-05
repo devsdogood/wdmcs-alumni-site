@@ -1,5 +1,5 @@
-import { Entry } from "contentful";
-import { IContentSection, IPage, IPageFields } from "./generated/contentful";
+import { Asset, Entry } from "contentful";
+import { IContentSection, IImageCollection, IPage, IPageFields } from "./generated/contentful";
 
 /**
  * `contentful-typescript-codegen` doesn't generate an enum of content types
@@ -7,40 +7,25 @@ import { IContentSection, IPage, IPageFields } from "./generated/contentful";
  * https://github.com/intercom/contentful-typescript-codegen/issues/54
  */
 export enum ContentTypes {
-    Announcement = 'announcement',
-    AnnouncementCollection = 'announcementCollection',
+    AlumniSpotlightCollection = 'alumniSpotlightCollection',
+    AlumSpotlight = 'alumSpotlight',
+    CampaignGraphic = 'campaignGraphic',
     ContentSection = 'contentSection',
     Event = 'event',
     EventCalendar = 'eventCalendar',
-    ExternalResource = 'externalResource',
-    Facilitator = 'facilitator',
-    FacilitatorCollection = 'facilitatorCollection',
+    ImageCollection = 'imageCollection',
     NavigationItem = 'navigationItem',
     NavigationMenu = 'navigationMenu',
-    Newsletter = 'newsletter',
-    NewsletterCollection = 'newsletterCollection',
     Page = 'page',
-    Resource = 'resource',
-    ResourceCollection = 'resourceCollection',
 };
 
 /** Collections which map to single entries */
 export const CollectionMap = {
-    [ContentTypes.AnnouncementCollection]: [
-        ContentTypes.Announcement,
+    [ContentTypes.AlumniSpotlightCollection]: [
+        ContentTypes.AlumSpotlight,
     ],
     [ContentTypes.EventCalendar]: [
         ContentTypes.Event,
-    ],
-    [ContentTypes.FacilitatorCollection]: [
-        ContentTypes.Facilitator,
-    ],
-    [ContentTypes.NewsletterCollection]: [
-        ContentTypes.Newsletter,
-    ],
-    [ContentTypes.ResourceCollection]: [
-        ContentTypes.ExternalResource,
-        ContentTypes.Resource,
     ],
 }
 
@@ -51,8 +36,10 @@ export type IEntryFieldsItem<T extends Entry<IPageFields | IPageFieldsItem['fiel
 export type IPageFieldsItem = Exclude<IEntryFieldsItem<IPage>, IContentSection>;
 
 /** Child items on the page (content section, announcement, etc).*/
-export type IPageItemFieldsItem = IEntryFieldsItem<IPageFieldsItem> | IContentSection;
+export type IPageItemFieldsItem = Exclude<IEntryFieldsItem<IPageFieldsItem>, Asset> | IContentSection;
 
 export const isIPage = (block: IPage | IPageFieldsItem | IPageItemFieldsItem): block is IPage => (block as IPage).sys?.contentType?.sys?.id === 'page';
 
 export const isIPageFieldsItem = (block: IPageFieldsItem | IPageItemFieldsItem): block is IPageFieldsItem => Array.isArray((block as IPageFieldsItem).fields?.content);
+
+export const isIImageCollection = (block: IPageFieldsItem | IPageItemFieldsItem): block is IImageCollection => block.sys.contentType.sys.id === "imageCollection"

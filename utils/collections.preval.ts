@@ -3,12 +3,8 @@ import { ContentTypes } from '../@types/contentTypes';
 import getContentful from './contentful';
 
 const collections = [
-    ContentTypes.Announcement,
+    ContentTypes.AlumSpotlight,
     ContentTypes.Event,
-    ContentTypes.Facilitator,
-    ContentTypes.Newsletter,
-    ContentTypes.Resource,
-    ContentTypes.ExternalResource,
 ];
 
 const getCollections = async () => {
