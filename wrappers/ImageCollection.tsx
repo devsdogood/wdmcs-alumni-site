@@ -8,7 +8,10 @@ const ImageCollection: React.FC<ImageCollectionProps> = ({ entry }) => {
     return (
         <div style={{border: 'red 1px solid'}}>
             {entry.fields.content.map((image) => (
-                <div key={image.fields.file.url}>image at {`https:${image.fields.file.url}`}</div>
+                <div key={image.fields.file.url}>
+                    image at {`https:${image.fields.file.url}`}
+                    {/* <img src={image.fields.file.url}></img> */}
+                </div>
             ))}
         </div>
     );
