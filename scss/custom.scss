@@ -1,6 +1,9 @@
-@import "node_modules/bootstrap/scss/bootstrap";
+// I have no idea if this works
 
-$theme-colors: (
-  "primary": '#ff4136',
-  "danger": #ff4136
-);
+$primary: black; // feel free to set them now
+$secondary: #f98324;
+$body-bg: #f7f2ee;
+
+
+@import "bootstrap";
+@import "node_modules/bootstrap/scss/bootstrap";

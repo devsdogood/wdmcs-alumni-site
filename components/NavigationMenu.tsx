@@ -3,7 +3,7 @@ import Link from "next/link";
 import { INavigationMenuFields } from "../@types/generated/contentful";
 
 const NavigationMenu: React.FC<INavigationMenuFields> = ({ menuItems, logo }) => (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav className="navbar navbar-expand-lg navbar-secondary bg-secondary">
         <div className="container-fluid">
             <div style={{position: 'relative', height: 60, width: 150}}>
                 <Link href="/" passHref>
@@ -32,7 +32,8 @@ const NavigationMenu: React.FC<INavigationMenuFields> = ({ menuItems, logo }) =>
                 </div>
             </div>
             <div className="nav navbar-nav navbar-right">
-                <button type="button" className="btn btn-light">Donate</button>
+                {/* <button type="button" className="btn btn-light">Donate</button> */}
+                <a href="https://www.wdmcsfoundation.org/make-an-impact/donate.html" className="btn btn-light">Donate</a>
             </div>
         </div>
     </nav>

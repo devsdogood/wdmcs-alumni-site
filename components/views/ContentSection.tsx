@@ -13,7 +13,8 @@ const options = {
 type ContentSectionProps = { entry: IContentSection };
 
 const ContentSection: React.FC<ContentSectionProps> = ({ entry }: ContentSectionProps) => (
-  <div className="container mt-5">
+  // @ts-ignore
+  <div className={entry.fields.fullWidth ? "container-full" : "container"}>
     {documentToReactComponents(entry.fields.content)}
   </div>
 );

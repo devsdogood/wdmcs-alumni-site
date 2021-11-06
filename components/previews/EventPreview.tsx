@@ -14,7 +14,7 @@ const EventPreview: React.FC<EventPreviewProps> = ({ entry }) => {
         {entry.fields.title}{" "}
       </h3>
       <h4>
-        We&apos;d love to see you there! Please RSVP here: 
+        We&apos;d love to see you there! {" "} 
         <button type="button" className="btn btn-primary">
           {entry.fields.rsvpLink && <Link href={entry.fields.rsvpLink}>RSVP</Link>}
         </button>
