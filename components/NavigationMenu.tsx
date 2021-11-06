@@ -15,9 +15,12 @@ const NavigationMenu: React.FC<{ menuItems: INavigationItem[] }> = ({ menuItems 
                         <a className="nav-link" key={item.sys.id} href={item.fields.page?.fields.slug || item.fields.externalUrl}> {item.fields.title} </a>
                     ))}
                 </div>
+                <button type="button" class="btn btn-light">Donate</button>
             </div>
         </div>
     </nav>
+    
+    
 );
 
 export default NavigationMenu;
