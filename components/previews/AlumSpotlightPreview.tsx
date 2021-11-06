@@ -7,12 +7,17 @@ type AlumSpotlightPreviewProps = {
 
 const AlumSpotlightPreview: React.FC<AlumSpotlightPreviewProps> = ({ entry }) => {
   return (
-    <p>
-      {entry.fields.name} with image at link {entry.fields.image?.fields.file.url}
-      and bio of
-      {entry.fields.content &&
-      documentToReactComponents(entry.fields.content)}
-    </p>
+    
+    <div className = "grid-item">
+     <div className = "grid-item">
+      <p>
+        
+        <h5>{entry.fields.name}</h5>
+        Bio: {entry.fields.content && documentToReactComponents(entry.fields.content)}
+      </p>
+      {entry.fields.image && (<img width = "30%" src={entry.fields.image?.fields.file.url}></img>)}
+      </div>
+    </div>
   );
 };
 
