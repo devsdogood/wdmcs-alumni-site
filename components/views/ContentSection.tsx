@@ -14,10 +14,9 @@ const options = {
 type ContentSectionProps = { entry: IContentSection };
 
 const ContentSection: React.FC<ContentSectionProps> = ({ entry }: ContentSectionProps) => (
-  <>
-    {documentToReactComponents(entry.fields.content, options)}
-    
-  </>
+  <div className="container mt-5">
+    {documentToReactComponents(entry.fields.content)}
+  </div>
 );
 
 export default ContentSection;
