@@ -1,7 +1,9 @@
 const AlumniSpotlightCollection: React.FC = ({ children }) => {
     return (
-        <div style={{border: 'red 1px solid'}}>
-            {children}
+        <div className="container">
+            <div className="card-wrapper">
+                {children}
+            </div>
         </div>
     );
 }

@@ -6,10 +6,10 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
-h1 {
+/* h1 {
 
   font-family: Josefin slab;
-}
+} */
 
 a {
   color: inherit;
@@ -30,50 +30,60 @@ nav a, button a {
 .navbar {
   
 }
-.al-PIC{
-  width: 10%;
-  height: 10%;
-  
-}
-.al-p{
-  font-size: 12px;
-  text-align: left;
-}
 
 .container-full {
   width: 100%;
-  margin: 1rem;
-  
+  padding: 1rem;
+}
+
+.container-full:last-child {
+  text-align: center;
+  background-color: #fa9747;
 }
 
 .campaign-graphic-container {
   margin-bottom: 1rem;
 }
 
+.alum-card {
+  display: flex;
+  flex-flow: row wrap;
+}
 
-.event-card-wrapper {
+.alum-photo {
+  max-width: 100%;
+}
+
+.alum-photo img {
+  width: 100%;
+}
+
+.alum-bio {
+  max-width: 49%;
+}
+
+.card-wrapper {
   display: flex;
   flex-flow: column nowrap;
   width: 100%;
   box-sizing: border-box;
 }
 
-.event-card-wrapper > * {
+.card-wrapper > * {
   width: 100%;
   padding: 1rem;
   margin-bottom: 1rem;
 }
+
 .grid-container {
   display: inline-grid;
   grid-template-columns: auto auto auto;
-  background-color: #2196F3;
+  background-color: #2195f300;
   padding: 10px;
+  align-self: center;
 }
 .grid-item {
   background-color: rgba(255, 255, 255, 0.8);
   border: 1px solid rgba(0, 0, 0, 0.8);
   padding: 20px;
-  
-  
-
 }

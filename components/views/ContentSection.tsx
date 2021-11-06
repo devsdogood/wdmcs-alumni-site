@@ -4,9 +4,11 @@ import { BLOCKS, MARKS,  } from '@contentful/rich-text-types';
 
 const options = {
   renderMark: {
+    // @ts-ignore
     [MARKS.BOLD]: (text) => <b style={{color:"red"}}>{text}</b>,
   },
   renderNode: {
+    // @ts-ignore
     [BLOCKS.HEADING_1]: (node, children) => <h1 style={{color:"orange"}}>{children}</h1>,
   },
 };

@@ -9,9 +9,11 @@ const CampaignGraphic: React.FC<CampaignGraphicProps> = ({ entry }) => {
 
   return (
     <div className='container campaign-graphic-container'>
-      {entry.fields.title} campaign:  
-      {entry.fields.raised} raised out of {entry.fields.goal}
-      <Link href={entry.fields.donationLink}>Donate</Link>
+      <h2> {entry.fields.title} {" "}  </h2>
+      <p>
+        ${entry.fields.raised} raised out of ${entry.fields.goal} {" "}
+        <a href={entry.fields.donationLink}>Help us reach our goal!</a>
+      </p>
       
       <div className="progress" style={{ height: '40px' }}>
         <div className="progress-bar" role="progressbar" style={{ width: `${percentComplete}%`}}></div>

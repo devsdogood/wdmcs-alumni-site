@@ -1,5 +1,6 @@
 import { IImageCollection } from "../@types/generated/contentful";
 import 'react-slideshow-image/dist/styles.css'
+// @ts-ignore
 import { Slide } from 'react-slideshow-image';
 type ImageCollectionProps = {
     entry: IImageCollection;
@@ -20,11 +21,6 @@ const ImageCollection: React.FC<ImageCollectionProps> = ({ entry }) => {
                 </Slide>
             </div>
         </div>
-        // <div style={{border: 'red 1px solid'}}>
-        //     {entry.fields.content.map((image) => (
-        //         <img src={image.fields.file.url} key={image.fields.file.url}></img>
-        //     ))}
-        // </div>
     );
 };
 
