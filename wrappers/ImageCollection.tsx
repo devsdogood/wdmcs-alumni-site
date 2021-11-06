@@ -12,7 +12,7 @@ const ImageCollection: React.FC<ImageCollectionProps> = ({ entry }) => {
                 <Slide>
                 {entry.fields.content.map((image, index) => (
                     <div className="each-slide" key={index}>
-                        <div style={{ 'height': '400px', 'margin': 'auto', 'max-width': '500px', 'background-size': 'cover', 'backgroundImage': `url(${image.fields.file.url})` }}>
+                        <div style={{ 'height': '400px', 'margin': 'auto', 'maxWidth': '500px', 'backgroundSize': 'cover', 'backgroundImage': `url(${image.fields.file.url})` }}>
                         </div>
                         <div style={{textAlign: 'center',}}>{image.fields.description}</div>
                     </div>
