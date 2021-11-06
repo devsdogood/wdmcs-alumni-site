@@ -19,6 +19,7 @@
     "react-dom": "17.0.2"
   },
   "devDependencies": {
+    "@types/bootstrap": "^5.1.6",
     "@types/react": "17.0.30",
     "contentful-management": "^7.44.2",
     "contentful-typescript-codegen": "^3.2.3",
