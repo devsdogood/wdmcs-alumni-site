@@ -1,5 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap/dist/js/bootstrap.js'
+// import 'bootstrap/dist/js/bootstrap'
 import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 import AppLayout from '../wrappers/AppWrapper';
