@@ -4,8 +4,6 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  background-color: #f7f2ee;
-
 }
 
 h1 {
@@ -33,6 +31,17 @@ nav a, button a {
   
 }
 
+.container-full {
+  width: 100%;
+  margin: 1rem;
+  
+}
+
+.campaign-graphic-container {
+  margin-bottom: 1rem;
+}
+
+
 .event-card-wrapper {
   display: flex;
   flex-flow: column nowrap;
@@ -43,7 +52,7 @@ nav a, button a {
 .event-card-wrapper > * {
   width: 100%;
   padding: 1rem;
-  margin: 1rem;
+  margin-bottom: 1rem;
 }
 .grid-container {
   display: grid;
