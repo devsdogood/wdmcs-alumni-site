@@ -1,6 +1,6 @@
 const EventCalendar: React.FC = ({ children }) => {
     return (
-        <div style={{border: 'green 1px solid'}}>
+        <div className="container">
             <div className="event-card-wrapper">
                 {children}
             </div>
