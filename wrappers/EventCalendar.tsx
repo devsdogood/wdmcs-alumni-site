@@ -1,10 +1,10 @@
+import { Grid } from "@mantine/core";
+
 const EventCalendar: React.FC = ({ children }) => {
     return (
-        <div className="container">
-            <div className="card-wrapper">
-                {children}
-            </div>
-        </div>
+        <Grid>
+            {children}
+        </Grid>
     );
 };
 

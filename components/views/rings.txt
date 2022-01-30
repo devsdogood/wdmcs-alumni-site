@@ -1,0 +1,70 @@
+{/* Alert section for pie char that shows the distribution of the funds across the total donations 
+Key needs to be filled in with the coresponding color to department*/}
+<p> Key:
+        Color: - Valley Alumni,
+        Color: - WDMCSF General Fund,
+        Color: - WDMCSF Student Support,
+        Color: - After Prom Committee,
+        Color: - Athletic Department,
+        Color: - Clive PTA,
+        Color: - Educate a Girl-Educate a Nation At Western Hills,
+        Color: - ELP Parent Parthnership,
+        Color: - Hall of Honor,
+        Color: - Hillside Elementary PTO,
+        Color: - Staff Recognition,
+        Color: - Stilwell PAC,
+        Color: - Student Scholarship Fund,
+        Color: - Teacher Grant Program,
+        Color: - Tiger Pride Supplies,
+        Color: - Valley Boys Track,
+        Color: - Valley Cheerleaders,
+        Color: - Valley Debate,
+        Color: - Valley Debate,
+        Color: - Valley Drama Booster,
+        Color: - Valley Fine Arts,
+        Color: - Valley Voices,
+        Color: - Valley Tigerlillies,
+        Color: - Valley/Valley SouthWoods PTO,
+        Color: - Walnut Creek Campus PTO,  
+    </p>        
+    {/*
+    Section for the Pie chart code 
+    Place to the right of key. The vlaues for each section still need to be placed and they need to equal to 
+    the percentage that the department has gotten out of the total amount of donations and the colors need to be assigned to each
+    Example: value: {function that calulates percentage}, color: teal
+    */}
+    <RingProgress label={<Text size="xs" align="center">Application data usage</Text>}
+        sections={[
+            { value: Valley Alumni, color: '' },  
+            { value: WDSMCSF,General Fund, color: '' },
+            { value: After Prom Committee, color: '' },
+            { value: Athletic Department, color: '' },
+            { value: WDSMCSF Student Support, color: '' },
+            { value: Clive,PTA color: '' },
+            { value: Educate a Girl-Educate a Nation at Western Hills, color: '' },
+            { value: ELP Parent, color: '' },
+            { value: Hall of Honor, color: '' },
+            { value: Hillside Elmentary PTO, color: '' },
+            { value: Staff Recognation fund, color: '' },
+            { value: Stillwell PAC, color: '' },
+            { value: Student Schalorship Fund, color: '' },
+            { value: Teacher Grant Program, color: '' },
+            { value: Tiger Pride Supplies, color: '' },
+            { value: Valley Boys Track, color: '' },
+            { value: Valley Debate, color: ''},
+            { value: Valley Cheerleaers, color: '' },
+            { value: Valley Drama Booster, color: '' },
+            { value: Valley Fine Arts, color: '' },
+            { value: Valley Voices, color: '' },
+            { value: Valleu Tigerlillies, color: '' },
+            { value: Valley/Valley SouthWoods PTO, color: '' },
+        ]}
+    />
+</p>
+            { value: Valley Fine Arts, color: '' },
+            { value: Valley Voices, color: '' },
+            { value: Valleu Tigerlillies, color: '' },
+            { value: Valley/Valley SouthWoods PTO, color: '' },
+        ]}
+    />
+</p>

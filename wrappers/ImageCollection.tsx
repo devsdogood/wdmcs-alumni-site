@@ -1,27 +1,47 @@
+import { useState, useEffect } from "react";
 import { IImageCollection } from "../@types/generated/contentful";
-import 'react-slideshow-image/dist/styles.css'
+
 // @ts-ignore
-import { Slide } from 'react-slideshow-image';
+import { ProGallery } from "pro-gallery";
+import "pro-gallery/dist/statics/main.css";
+// import { getWindowDimensions } from "./util";
+
 type ImageCollectionProps = {
-    entry: IImageCollection;
+  entry: IImageCollection;
 };
 
 const ImageCollection: React.FC<ImageCollectionProps> = ({ entry }) => {
-    return (
-        <div>
-            <div className="slide-container">
-                <Slide>
-                {entry.fields.content.map((image, index) => (
-                    <div className="each-slide" key={index}>
-                        <div style={{ 'height': '400px', 'margin': 'auto', 'maxWidth': '500px', 'backgroundSize': 'cover', 'backgroundImage': `url(${image.fields.file.url})` }}>
-                        </div>
-                        <div style={{textAlign: 'center',}}>{image.fields.description}</div>
-                    </div>
-                ))}
-                </Slide>
-            </div>
-        </div>
-    );
+  const [size, setSize] = useState<{ width?: number, height?: number }>({width: undefined, height: undefined})
+
+  useEffect(() => {
+    setSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+    });
+  }, []);
+
+  const items = entry.fields.content.map((image) => ({
+    itemId: image.sys.id,
+    mediaUrl: image.fields.file.url,
+    metaData: {
+      type: "image",
+      height: image.fields.file.details.image?.height,
+      width: image.fields.file.details.image?.width,
+      title: image.fields.title,
+      description: image.fields.description,
+      focalPoint: [0, 0],
+    },
+  }));
+
+  return size.width ? (
+    <ProGallery
+      items={items}
+      container={{
+        width: size.width,
+        height: size.height,
+      }}
+    />
+  ) : <></>;
 };
 
 export default ImageCollection;

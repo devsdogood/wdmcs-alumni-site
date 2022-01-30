@@ -18,6 +18,7 @@ const SlugPage: NextPage<{page: IPage | false}> = ({ page }) => {
       <Head>
         <title>{page.fields.title}</title>
         <meta name="description" content={page.fields.description} />
+        <link rel="icon" href="./favicon.ico" type="image/icon type" />
       </Head>
       <BlockRenderer block={page} />
     </>

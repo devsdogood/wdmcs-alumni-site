@@ -41,6 +41,9 @@ export interface IAlumSpotlightFields {
   /** Name */
   name: string;
 
+  /** Graduation Year */
+  graduationYear: number;
+
   /** Image */
   image?: Asset | undefined;
 
@@ -106,6 +109,9 @@ export interface IContentSectionFields {
 
   /** Content */
   content: Document;
+
+  /** full-width */
+  fullWidth?: boolean | undefined;
 }
 
 /** A content section to display on your site. This can contain text formatting, images, links, etc. */
@@ -145,6 +151,9 @@ export interface IEventFields {
 
   /** RSVP Link */
   rsvpLink?: string | undefined;
+
+  /** Image */
+  image: Asset;
 }
 
 /** An event to be displayed on an event calendar. */
@@ -296,6 +305,7 @@ export interface IPageFields {
   /** Content */
   content: (
     | IAlumniSpotlightCollection
+    | ICampaignGraphic
     | IContentSection
     | IEventCalendar
     | IImageCollection

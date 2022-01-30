@@ -1,32 +1,40 @@
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { IAlumSpotlight } from "../../@types/generated/contentful";
+import { Card, Image, Center, Grid, Badge, Title } from "@mantine/core";
 
 type AlumSpotlightPreviewProps = {
   entry: IAlumSpotlight;
 };
 
-const AlumSpotlightPreview: React.FC<AlumSpotlightPreviewProps> = ({ entry }) => {
+const AlumSpotlightPreview: React.FC<AlumSpotlightPreviewProps> = ({
+  entry,
+}) => {
   return (
-    <div className="card">
-      <div className="row">
-
-        <div className="col-md alum-photo">
-          {entry.fields.image && (
-            <img
-            className="card"
-            alt={entry.fields.image?.fields.file.fileName}
-            src={entry.fields.image?.fields.file.url}>  
-            </img>
-          )}
-        </div>
-        <div className="col-md alum-bio">
-          <h2>{entry.fields.name}</h2>
-          <p>
-            {entry.fields.content && documentToReactComponents(entry.fields.content)}
-          </p>
-        </div>
+    <Card
+      style={{ padding: "1%", width: "400px", height: "550px", margin: "1%" }}
+    >
+      {entry.fields.image && (
+        <Image
+          alt={entry.fields.image?.fields.file.fileName}
+          src={entry.fields.image?.fields.file.url}
+          style={{ width: "auto" }}
+        />
+      )}
+      <div className="mt-3">
+        <Grid className="mb-3">
+          <Grid.Col span={10}>
+            <Title order={3}>{entry.fields.name}</Title>
+          </Grid.Col>
+          <Grid.Col span={2}>
+            <Badge color="orange" variant="light" style={{ margin: "1%" }}>
+              {entry.fields.graduationYear}
+            </Badge>
+          </Grid.Col>
+        </Grid>
+        {entry.fields.content &&
+          documentToReactComponents(entry.fields.content)}
       </div>
-    </div>
+    </Card>
   );
 };
 

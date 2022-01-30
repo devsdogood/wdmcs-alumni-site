@@ -1,9 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* tailwind like utilities */
+
+.h-screen\/2 {
+  height: 50vh;
+}
+
 html,
 body {
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+body {
+  overflow-x: hidden;
 }
 
 /* h1 {
@@ -17,18 +31,17 @@ a {
   /* float: left; */
 }
 
-nav a, button a {
+nav a,
+button a {
   color: inherit;
   text-decoration: none;
   float: left;
 }
 
+
+
 * {
   box-sizing: border-box;
-}
-
-.navbar {
-  
 }
 
 .container-full {
@@ -41,9 +54,9 @@ nav a, button a {
   background-color: #fa9747;
 }
 
-.campaign-graphic-container {
+/* .campaign-graphic-container {
   margin-bottom: 1rem;
-}
+} */
 
 .alum-card {
   display: flex;
@@ -86,4 +99,20 @@ nav a, button a {
   background-color: rgba(255, 255, 255, 0.8);
   border: 1px solid rgba(0, 0, 0, 0.8);
   padding: 20px;
+}
+
+button {
+  display: block;
+  margin-left: auto;
+  margin-right: 0;
+  float: right;
+  padding-right: 50px;
+}
+
+.bgWrap {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  z-index: -1;
 }

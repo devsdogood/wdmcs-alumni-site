@@ -1,11 +1,11 @@
+import { Grid, Center } from "@mantine/core";
+
 const AlumniSpotlightCollection: React.FC = ({ children }) => {
-    return (
-        <div className="container">
-            <div className="card-wrapper">
-                {children}
-            </div>
-        </div>
-    );
-}
+  return (
+    <Center>
+      <Grid className="justify-content-center">{children}</Grid>
+    </Center>
+  );
+};
 
 export default AlumniSpotlightCollection;
