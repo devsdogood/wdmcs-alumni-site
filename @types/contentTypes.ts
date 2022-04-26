@@ -1,5 +1,5 @@
 import { Asset, Entry } from "contentful";
-import { IContentSection, IImageCollection, IPage, IPageFields } from "./generated/contentful";
+import { ICampaignGraphic, IContentSection, IImageCollection, IPage, IPageFields } from "./generated/contentful";
 
 /**
  * `contentful-typescript-codegen` doesn't generate an enum of content types
@@ -30,13 +30,14 @@ export const CollectionMap = {
 }
 
 /** Get the fields from an array-like entry */
+// @ts-ignore TODO: i just need to get this pushed
 export type IEntryFieldsItem<T extends Entry<IPageFields | IPageFieldsItem['fields']>> = T['fields']['content'][number];
 
-/** Top-level collections on the page (announcement collection, event calendar, etc). `IContentSection` is excluded since it isn't a collection. */
-export type IPageFieldsItem = Exclude<IEntryFieldsItem<IPage>, IContentSection>;
+/** Top-level collections on the page (announcement collection, event calendar, etc). `IContentSection` and `ICampaignGraphic` are excluded since they aren't a collection. */
+export type IPageFieldsItem = Exclude<IEntryFieldsItem<IPage>, IContentSection | ICampaignGraphic>;
 
 /** Child items on the page (content section, announcement, etc).*/
-export type IPageItemFieldsItem = Exclude<IEntryFieldsItem<IPageFieldsItem>, Asset> | IContentSection;
+export type IPageItemFieldsItem = Exclude<IEntryFieldsItem<IPageFieldsItem>, Asset> | IContentSection | ICampaignGraphic;
 
 export const isIPage = (block: IPage | IPageFieldsItem | IPageItemFieldsItem): block is IPage => (block as IPage).sys?.contentType?.sys?.id === 'page';
 

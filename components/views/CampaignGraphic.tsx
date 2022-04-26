@@ -55,7 +55,6 @@ const CampaignGraphic: React.FC<CampaignGraphicProps> = ({ entry }) => {
           id="tsparticles"
           width="1"
           height="1"
-          options={particlesConfig}
           className="-z-1"
           style={{
             position: "sticky",
@@ -131,12 +130,12 @@ const CampaignGraphic: React.FC<CampaignGraphicProps> = ({ entry }) => {
         </div>
 
         {/* Chevron Transition. You can change the color with the class name*/}
-        <ChevronTransition
+        {/* <ChevronTransition
           height={100}
           chevronBias={25}
           className="bg-bootstrap-body"
           direction={ChevronDirection.Up}
-        />
+        /> */}
       </div>
     </>
   );
