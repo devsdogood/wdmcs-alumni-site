@@ -84,14 +84,14 @@ const CampaignGraphic: React.FC<CampaignGraphicProps> = ({ entry }) => {
             </p>
             <div className="flex flex-col lg:flex-row">
               <div className="w-96 mx-auto">
-                <Progress
+                {/* <Progress
                   color="orange"
                   value={percentComplete}
                   label={`${percentComplete}%`}
                   size={60}
                   radius={"md"}
                   className=""
-                />
+                /> */}
                 <AnimatedProgressBar from={0} to={maxPercent / 100} width={400} />
               </div>
 

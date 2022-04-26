@@ -41,7 +41,7 @@ const EventPreview: React.FC<EventPreviewProps> = ({ entry }) => {
 
         <a href={entry.fields.rsvpLink} target="_blank" rel="noreferrer">
         <Button variant="light" color="orange" fullWidth style={{ marginTop: 14 }}>
-            <a style={{ textDecoration: 'none' }}>RSVP</a>
+            <a style={{ textDecoration: 'none' }}>Details</a>
         </Button>
         </a>
       </Card>

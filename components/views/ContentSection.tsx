@@ -73,7 +73,7 @@ const options = {
                 <br></br>
                 
                   <TextInput placeholder="Your email" label="WDMCS Alumni Association Newsletter" description="Sign up for news over the West Des Moines Community School District." radius="md" style={{float: "right"}}/>
-                  <Button color="orange" style={{ marginTop: '5px' }} onClick={() => notifications.showNotification({message: "Thanks for signing up!", color: 'green'})}>Submit</Button>
+                  <Button color="orange" style={{ marginTop: '5px' }} onClick={() => notifications.showNotification({message: "Thanks for signing up!", color: 'orange'})}>Submit</Button>
 
               </Container>
             
